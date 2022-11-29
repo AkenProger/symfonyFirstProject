@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datalist{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_logout') }}">Выйти</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Войти</a>
+        <a href="{{ path('app_register') }}">Регистрация</a>
+    {% endif %}
+    <div style="max-width: 1400px; margin: 0 auto">
+        <h1>Список компаний:</h1>
+        <div style="display: flex; gap: 20px; color: black; flex-wrap: wrap">
+            {% for key, data in dataList %}
+                <div style="width: 300px; height: auto; border: 1px solid #2d2d2d; border-radius: 12px;">
+                    <img src="{{ data }}" alt="" width="100%" style="border-radius: 12px">
+                    <h2>{{ key }}</h2>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

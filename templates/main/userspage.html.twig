@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users list{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_logout') }}">Выйти</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Войти</a>
+        <a href="{{ path('app_register') }}">Регистрация</a>
+    {% endif %}
+    <div style="max-width: 1400px; margin: 0 auto">
+        <h1>Список пользователей:</h1>
+            {% for user in users %}
+              <h2 style="background-color: #2d2d2d; color: white;">{{ user.getId() }}  {{ user.getEmail() }} | {{user.getPassword()}}</h2>
+            {% endfor %}
+    </div>
+{% endblock %}

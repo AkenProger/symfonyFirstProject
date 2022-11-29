@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    <div style="max-width: 1200px; margin: 0 auto">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('app_logout') }}">Выйти</a>
+            <a href="/dataList">Список компаний</a>
+            <a href="/users">Список пользователей</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">Войти</a>
+            <a href="{{ path('app_register') }}">Регистрация</a>
+        {% endif %}
+        <h1>Добро пожаловать!</h1>
+        <div style="display: flex;  justify-content: center; gap: 20px; color: white">
+            <div style="width: 300px; height: 250px; background-color: #999999">
+                <h2>Cart- 1</h2>
+            </div>
+            <div style="width: 300px; height: 250px; background-color: #999999">
+                <h2>Cart- 2</h2>
+            </div>
+            <div style="width: 300px; height: 250px; background-color: #999999">
+                <h2>Cart- 3</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
